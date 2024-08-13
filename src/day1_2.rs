@@ -2,10 +2,11 @@ use std::fs;
 
 pub fn main() {
     let file = "puzzles/2023/1.1";
-    let pattern = read_file(file);
-
+    
+    let pattern = get_pattern();
+    let pattern = replace_digits(pattern);
+    
     let vals = get_values(pattern);
-    let vals = replace_digits(pattern)
 
     sum_values(vals);
 }
@@ -18,9 +19,9 @@ pub fn read_file(file: &str) -> String {
     return contents;
 }
 
-pub fn replace_digits(pattern: mut &str) -> String {
+pub fn replace_digits(pattern: String) -> String {
     let p = pattern;
-    let pattern = pattern.replace("one","o1e");
+    let p = p.replace("one","o1e");
     let p = p.replace("two","t2o");
     let p = p.replace("three","t3e");
     let p = p.replace("four","f4r");
